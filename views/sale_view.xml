@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_product_custom_stable" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.product.id</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_id']" position="before">
+                <field name="product_custom_id" string="Product ID"/>
+            </xpath>
+        </field>
+    </record>
+
+    <template id="report_saleorder_document_inherit_product_stable" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//table[1]//thead//tr//th[1]" position="before">
+            <th class="text-start"><span>Product ID</span></th>
+        </xpath>
+        
+        <xpath expr="//table[1]//tbody[hasclass('sale_tbody')]//tr[1]//td[1]" position="before">
+            <td>
+                <span t-field="line.product_id.product_custom_id"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

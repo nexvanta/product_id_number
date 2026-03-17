@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_invoice_form_product_custom_id" model="ir.ui.view">
+        <field name="name">account.move.form.product.custom.id</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/list//field[@name='name']" position="after">
+                <field name="product_custom_id" string="Product ID" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <template id="report_invoice_document_with_product_id" inherit_id="account.report_invoice_document">
+        <xpath expr="//thead//tr//th[@name='th_description']" position="after">
+            <th name="th_product_custom_id" class="text-start">
+                <span>Product ID</span>
+            </th>
+        </xpath>
+
+        <xpath expr="//tbody[contains(@class, 'invoice_tbody')]//td[1]" position="after">
+            <td name="td_product_custom_id" class="text-start">
+                <span t-field="line.product_custom_id"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

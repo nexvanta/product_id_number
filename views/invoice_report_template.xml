@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_inherit_product_custom" inherit_id="account.report_invoice_document">
+        <xpath expr="//table[@name='invoice_line_table']//thead//tr//th[1]" position="replace">
+            <th name="th_product_custom_id" class="text-start"><span>Product ID</span></th>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']//tbody//tr[1]//td[1]" position="replace">
+            <td name="td_product_custom_id">
+                <span t-field="line.product_id.product_custom_id"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

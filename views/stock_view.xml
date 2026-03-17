@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_quant_tree_inventory_report_id" model="ir.ui.view">
+        <field name="name">stock.quant.inventory.report.inherit.product.id</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="product_custom_id" string="Product ID" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
